@@ -1,0 +1,162 @@
+return {
+	-- {
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	-- "iguanacucumber/magazine.nvim",
+	-- 	-- branch = "main",
+	-- 	-- name = "nvim-cmp", -- Otherwise highlighting gets messed up
+	-- 	-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+	-- 	-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+	-- 	-- { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+	-- 	-- { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+	-- 	--
+	-- 	-- -- "https://codeberg.org/FelipeLema/cmp-async-path", -- not by me, but better than cmp-path
+	--
+	-- 	dependencies = {
+	-- 		"onsails/lspkind.nvim",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"hrsh7th/cmp-nvim-lsp",
+	-- 		"hrsh7th/cmp-buffer",
+	-- 		"hrsh7th/cmp-path",
+	-- 		"hrsh7th/cmp-cmdline",
+	-- 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+	-- 		"saadparwaiz1/cmp_luasnip",
+	-- 		"rafamadriz/friendly-snippets",
+	-- 		-- for vsnip users
+	-- 		-- "hrsh7th/cmp-vsnip",
+	-- 		-- "hrsh7th/vim-vsnip"
+	-- 	},
+	--
+	-- 	config = function()
+	-- 		local lspkind = require("lspkind")
+	-- 		lspkind.init({})
+	-- 		local cmp = require("cmp")
+	-- 		cmp.setup({
+	-- 			snippet = {
+	-- 				-- REQUIRED - you must specify a snippet engine
+	-- 				expand = function(args)
+	-- 					-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+	-- 					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+	-- 					-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+	-- 					-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+	-- 					-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+	-- 				end,
+	-- 			},
+	-- 			window = {
+	-- 				completion = cmp.config.window.bordered(),
+	-- 				documentation = cmp.config.window.bordered(),
+	-- 			},
+	-- 			mapping = cmp.mapping.preset.insert({
+	-- 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+	-- 				["<C-f>"] = cmp.mapping.scroll_docs(4),
+	-- 				["<C-Space>"] = cmp.mapping.complete(),
+	-- 				["<C-e>"] = cmp.mapping.abort(),
+	-- 				["<CR>"] = cmp.mapping.confirm({
+	-- 					behavior = cmp.ConfirmBehavior.Insert,
+	-- 					select = true,
+	-- 				}, { "i", "c" }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	-- 			}),
+	-- 			sources = cmp.config.sources({
+	-- 				{ name = "nvim_lsp" },
+	-- 				-- { name = 'vsnip' }, -- For vsnip users.
+	-- 				{ name = "luasnip" }, -- For luasnip users.
+	-- 				-- { name = 'ultisnips' }, -- For ultisnips users.
+	-- 				-- { name = 'snippy' }, -- For snippy users.
+	-- 			}, {
+	-- 				{ name = "path" },
+	-- 			}, {
+	-- 				{ name = "buffer" },
+	-- 			}),
+	-- 		})
+	--
+	-- 		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+	-- 		cmp.setup.cmdline({ "/", "?" }, {
+	-- 			mapping = cmp.mapping.preset.cmdline(),
+	-- 			sources = {
+	-- 				{ name = "buffer" },
+	-- 			},
+	-- 		})
+	--
+	-- 		-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+	-- 		cmp.setup.cmdline(":", {
+	-- 			mapping = cmp.mapping.preset.cmdline(),
+	-- 			sources = cmp.config.sources({
+	-- 				{ name = "path" },
+	-- 			}, {
+	-- 				{ name = "cmdline" },
+	-- 			}),
+	-- 			matching = { disallow_symbol_nonprefix_matching = false },
+	-- 		})
+	--
+	-- 		-- Set up lspconfig.
+	-- 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	-- 		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+	-- 		require("lspconfig")["pyright"].setup({
+	-- 			capabilities = capabilities,
+	-- 		})
+	--
+	-- 		require("lspconfig")["ansiblels"].setup({
+	-- 			capabilities = capabilities,
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		-- add any options here
+	-- 	},
+	-- 	dependencies = {
+	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		-- OPTIONAL:
+	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
+	-- 		--   If not available, we use `mini` as the fallback
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- 	config = function()
+	-- 		require("noice").setup({
+	-- 			lsp = {
+	-- 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+	-- 				override = {
+	-- 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+	-- 					["vim.lsp.util.stylize_markdown"] = true,
+	-- 					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+	-- 				},
+	-- 			},
+	-- 			-- you can enable a preset for easier configuration
+	-- 			presets = {
+	-- 				bottom_search = true, -- use a classic bottom cmdline for search
+	-- 				command_palette = false, -- position the cmdline and popupmenu together
+	-- 				long_message_to_split = true, -- long messages will be sent to a split
+	-- 				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+	-- 				lsp_doc_border = false, -- add a border to hover docs and signature help
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	event = "InsertEnter",
+	-- 	config = true,
+	-- 	-- use opts = {} for passing setup options
+	-- 	-- this is equivalent to setup({}) function
+	-- },
+	-- {
+	-- 	"folke/which-key.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		-- your configuration comes here
+	-- 		-- or leave it empty to use the default settings
+	-- 		-- refer to the configuration section below
+	-- 	},
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>?",
+	-- 			function()
+	-- 				require("which-key").show({ global = false })
+	-- 			end,
+	-- 			desc = "Buffer Local Keymaps (which-key)",
+	-- 		},
+	-- 	},
+	-- },
+}
